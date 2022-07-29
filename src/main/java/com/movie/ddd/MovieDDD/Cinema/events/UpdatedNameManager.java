@@ -3,7 +3,6 @@ package com.movie.ddd.MovieDDD.Cinema.events;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.movie.ddd.MovieDDD.Cinema.values.CinemaId;
 import com.movie.ddd.MovieDDD.Cinema.values.ManagerId;
-import com.movie.ddd.MovieDDD.Cinema.values.Name;
 
 public class UpdatedNameManager extends DomainEvent {
     private final ManagerId managerId;
