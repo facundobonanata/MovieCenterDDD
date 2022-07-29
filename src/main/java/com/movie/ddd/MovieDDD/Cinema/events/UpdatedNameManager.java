@@ -5,16 +5,18 @@ import com.movie.ddd.MovieDDD.Cinema.values.CinemaId;
 import com.movie.ddd.MovieDDD.Cinema.values.ManagerId;
 import com.movie.ddd.MovieDDD.Cinema.values.Name;
 
+import java.util.UUID;
+
 public class UpdatedNameManager extends DomainEvent {
     private final ManagerId managerId;
     private final Name name;
-    //private final CinemaId cinemaId;
+    private final CinemaId cinemaId;
 
-    public UpdatedNameManager(ManagerId managerId, Name name) {
-        super("com.movie.ddd.MovieDDD.cinema.UpdatedNameManager");
+    public UpdatedNameManager(ManagerId managerId, Name name, CinemaId cinemaId) {
+        super("com.movie.ddd.MovieDDD.cinema.updatednamemanager");
         this.managerId = managerId;
         this.name = name;
-        //this.cinemaId = cinemaId;
+        this.cinemaId = cinemaId;
     }
 
     public ManagerId getManagerId() {
@@ -25,7 +27,7 @@ public class UpdatedNameManager extends DomainEvent {
         return name;
     }
 
-   // public CinemaId getCinemaId() {
-     //   return cinemaId;
-    //}
+    public CinemaId getCinemaId() {
+        return cinemaId;
+    }
 }

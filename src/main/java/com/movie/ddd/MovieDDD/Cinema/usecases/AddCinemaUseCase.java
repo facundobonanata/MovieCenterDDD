@@ -9,11 +9,11 @@ import com.movie.ddd.MovieDDD.Cinema.commands.AddCinema;
 public class AddCinemaUseCase extends UseCase<RequestCommand<AddCinema>, ResponseEvents> {
 
 
-@Override
-public void executeUseCase(RequestCommand<AddCinema> AddCinemaRequestCommand) {
-    var command = AddCinemaRequestCommand.getCommand();
-    var cinema = new Cinema(command.getCinemaId(), command.getSeats(), command.getManager());
-    emit().onResponse(new ResponseEvents(cinema.getUncommittedChanges()));
-}
+    @Override
+    public void executeUseCase(RequestCommand<AddCinema> addCinemaRequestCommand) {
+        var command = addCinemaRequestCommand.getCommand();
+        var cinema = new Cinema(command.getCinemaId(), command.getName(),command.getSeats(), command.getMovie(),command.getManager());
+        emit().onResponse(new ResponseEvents(cinema.getUncommittedChanges()));
+    }
 }
 

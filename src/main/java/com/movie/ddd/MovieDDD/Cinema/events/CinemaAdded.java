@@ -1,32 +1,47 @@
 package com.movie.ddd.MovieDDD.Cinema.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
+import com.movie.ddd.MovieDDD.Cinema.entities.Manager;
 import com.movie.ddd.MovieDDD.Cinema.entities.Movie;
-import com.movie.ddd.MovieDDD.Cinema.entities.Seat;
+import com.movie.ddd.MovieDDD.Cinema.values.CinemaId;
+import com.movie.ddd.MovieDDD.Cinema.values.Name;
+import com.movie.ddd.MovieDDD.Cinema.values.Seat;
 
 import java.util.Set;
 
 public class CinemaAdded extends DomainEvent {
+    private final CinemaId cinemaId;
+    private final Name name;
     private final Set<Seat> seats;
-    private final String manager;
     private final Movie movie;
+    private final Manager manager;
 
-    public CinemaAdded(Set<Seat> seats, Movie movie, String manager) {
-        super("com.movie.ddd.MovieDDD.cinema.CinemaAdded");
+    public CinemaAdded(CinemaId cinemaId, Name name, Set<Seat> seats,Movie movie, Manager manager) {
+        super("com.movie.ddd.MovieDDD.cinema.cinemaadded");
         this.seats = seats;
-        this.manager=manager;
-        this.movie=movie;
+        this.movie = movie;
+        this.manager = manager;
+        this.name = name;
+        this.cinemaId = cinemaId;
+    }
+
+    public CinemaId getCinemaId() {
+        return cinemaId;
+    }
+
+    public Name getName() {
+        return name;
     }
 
     public Set<Seat> getSeats() {
         return seats;
     }
 
-    public String getManager() {
-        return manager;
-    }
-
     public Movie getMovie() {
         return movie;
+    }
+
+    public Manager getManager() {
+        return manager;
     }
 }
