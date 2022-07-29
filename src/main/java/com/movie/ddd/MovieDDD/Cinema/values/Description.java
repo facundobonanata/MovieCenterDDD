@@ -1,0 +1,35 @@
+package com.movie.ddd.MovieDDD.Cinema.values;
+
+import co.com.sofka.domain.generic.ValueObject;
+
+import java.util.Objects;
+
+public class Description implements ValueObject<String> {
+    public final String value;
+
+    public Description(String value) {
+        this.value = Objects.requireNonNull(value);
+        if (this.value.isBlank()) {
+            throw new IllegalArgumentException("Description cannot be empty");
+        }
+    }
+
+    @Override
+    public String value() {
+        return value;
+    }
+
+    public boolean equals(Object o){
+    if(this== o ) return true;
+    if(o== null || getClass() != o.getClass()) return false;
+    Description that = (Description) o;
+    return Objects.equals(value, that.value);
+    }
+
+
+@Override
+public  int hashCode() {
+    return Objects.hash(value);
+}
+}
+

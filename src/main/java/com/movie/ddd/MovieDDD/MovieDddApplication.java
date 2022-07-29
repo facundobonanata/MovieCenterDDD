@@ -10,4 +10,5 @@ public class MovieDddApplication {
 		SpringApplication.run(MovieDddApplication.class, args);
 	}
 
+
 }
