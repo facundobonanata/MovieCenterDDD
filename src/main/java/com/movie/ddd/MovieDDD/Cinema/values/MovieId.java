@@ -10,7 +10,8 @@ public class MovieId extends Identity {
 
     }
         public static MovieId of(String id){
-            return new MovieId(id);
+
+        return new MovieId(id);
         }
     }
 

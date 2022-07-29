@@ -12,6 +12,9 @@ public class Manager extends Entity<ManagerId> {
         super(entityId);
         this.name = name;
     }
+   /* public void UpdateNameManager(String nombreModificar){
+        this.name = name.modificarNombre(nombreModificar);
+    }*/
 
     public Name getName() {
         return name;

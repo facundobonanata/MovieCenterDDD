@@ -11,6 +11,9 @@ public class Seat extends Entity<SeatId> {
         super(entityId);
         this.seatType = seatType;
     }
+    public void cambiarAnchura(SeatType seatType){
+        this.seatType = seatType;
+    }
 
     public SeatType getSeatType() {
         return seatType;

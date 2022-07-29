@@ -1,18 +1,28 @@
 package com.movie.ddd.MovieDDD.Cinema.entities;
 
 import co.com.sofka.domain.generic.Entity;
-import com.movie.ddd.MovieDDD.Cinema.values.Description;
+import com.movie.ddd.MovieDDD.Cinema.values.Gender;
+import com.movie.ddd.MovieDDD.Cinema.values.Language;
 import com.movie.ddd.MovieDDD.Cinema.values.MovieId;
 
-public class Movie extends Entity<MovieId> {
-    private Description description;
+import java.util.Objects;
 
-    public Movie(MovieId entityId, Description description) {
+public class Movie extends Entity<MovieId> {
+    private Gender gender;
+    private Language language;
+
+    public Movie(MovieId entityId, Gender gender, Language language) {
         super(entityId);
-        this.description = description;
+        this.gender = gender;
+        this.language = language;
     }
 
-    public Description getDescription() {
-        return description;
+
+    public Gender gender() {
+        return gender;
+    }
+
+    public Language language() {
+        return language;
     }
 }

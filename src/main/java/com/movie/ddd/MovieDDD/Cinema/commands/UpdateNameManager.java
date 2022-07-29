@@ -7,13 +7,14 @@ import com.movie.ddd.MovieDDD.Cinema.values.ManagerId;
 import com.movie.ddd.MovieDDD.Cinema.values.Name;
 
 public class UpdateNameManager extends Command {
-    private final ManagerId managerId;
-    private final Name name;
     private final CinemaId cinemaId;
 
-    public UpdateNameManager(ManagerId managerId, Name name, CinemaId cinemaId) {
-        this.managerId = managerId;
+    private final ManagerId managerId;
+    private final Name name;
+
+    public UpdateNameManager(Name name,ManagerId managerId, CinemaId cinemaId) {
         this.name = name;
+        this.managerId = managerId;
         this.cinemaId = cinemaId;
     }
 
