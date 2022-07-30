@@ -1,7 +1,6 @@
 package com.movie.ddd.MovieDDD.Cinema.commands;
 
 import co.com.sofka.domain.generic.Command;
-import com.movie.ddd.MovieDDD.Cinema.entities.Manager;
 import com.movie.ddd.MovieDDD.Cinema.entities.Seat;
 import com.movie.ddd.MovieDDD.Cinema.values.Capacidad;
 import com.movie.ddd.MovieDDD.Cinema.values.CinemaId;

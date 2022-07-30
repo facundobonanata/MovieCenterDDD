@@ -5,18 +5,14 @@ import com.movie.ddd.MovieDDD.Cinema.Cinema;
 import com.movie.ddd.MovieDDD.Cinema.values.*;
 
 public class AddMovie extends Command {
-    private final CinemaId cinemaId;
     private final Gender gender;
     private final Language language;
     private final MovieName movieName;
-    private final MovieId movieId;
 
-    public AddMovie(MovieId movieId, CinemaId cinemaId, MovieName movieName, Gender gender, Language language) {
+    public AddMovie(MovieName movieName, Gender gender, Language language) {
         this.gender = gender;
         this.language = language;
-        this.cinemaId=cinemaId;
         this.movieName=movieName;
-        this.movieId=movieId;
     }
 
 
@@ -28,16 +24,11 @@ public class AddMovie extends Command {
         return language;
     }
 
-    public CinemaId getCinemaId() {
-        return cinemaId;
-    }
 
     public MovieName getMovieName() {
         return movieName;
     }
 
-    public MovieId getMovieId() {
-        return movieId;
-    }
+
 }
 

@@ -10,6 +10,7 @@ public class AddEstablecimiento extends Command {
     private final NameEstablecimiento nameEstablecimiento;
     private final Adress adress;
 
+
     public AddEstablecimiento(EstablecimientoId entityId, NameEstablecimiento nameEstablecimiento, Adress adress) {
         this.entityId = entityId;
         this.nameEstablecimiento = nameEstablecimiento;
@@ -27,4 +28,6 @@ public class AddEstablecimiento extends Command {
     public Adress getAdress() {
         return adress;
     }
+
+
 }

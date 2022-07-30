@@ -1,29 +1,21 @@
 package com.movie.ddd.MovieDDD.cinema;
 
-
 import co.com.sofka.business.generic.UseCaseHandler;
-import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.movie.ddd.MovieDDD.Cinema.Cinema;
 import com.movie.ddd.MovieDDD.Cinema.commands.AddCinema;
-import com.movie.ddd.MovieDDD.Cinema.entities.Manager;
-import com.movie.ddd.MovieDDD.Cinema.entities.Movie;
 import com.movie.ddd.MovieDDD.Cinema.entities.Seat;
 import com.movie.ddd.MovieDDD.Cinema.events.CinemaAdded;
 import com.movie.ddd.MovieDDD.Cinema.usecases.AddCinemaUseCase;
 import com.movie.ddd.MovieDDD.Cinema.values.*;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-import static org.mockito.Mockito.*;
 
 public class AddCinemaUseCaseTest {
     @Test

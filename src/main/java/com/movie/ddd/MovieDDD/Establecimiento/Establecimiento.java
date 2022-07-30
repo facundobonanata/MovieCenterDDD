@@ -16,9 +16,9 @@ public class Establecimiento  extends AggregateEvent<EstablecimientoId> {
 
     Seller seller;
 
-    public Establecimiento(EstablecimientoId entityId, NameEstablecimiento nameEstablecimiento, Adress adress, BillBoard billBoard, Seller seller) {
+    public Establecimiento(EstablecimientoId entityId, NameEstablecimiento nameEstablecimiento, Adress adress) {
         super(entityId);
-        appendChange(new EstablecimientoAdded(entityId, nameEstablecimiento, adress, billBoard, seller));
+        appendChange(new EstablecimientoAdded(entityId, nameEstablecimiento, adress));
     }
         private Establecimiento(EstablecimientoId establecimientoId){
             super(establecimientoId);

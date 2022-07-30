@@ -12,8 +12,6 @@ public class EstablecimientoChange extends EventChange {
         apply((EstablecimientoAdded event)->{
             establecimiento.nameEstablecimiento = event.getNameEstablecimiento();
             establecimiento.adress = event.getAdress();
-            establecimiento.billBoard = event.getBillBoard();
-            establecimiento.seller = event.getSeller();
 
         });
 
