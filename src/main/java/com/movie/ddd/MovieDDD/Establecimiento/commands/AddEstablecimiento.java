@@ -6,19 +6,19 @@ import com.movie.ddd.MovieDDD.Establecimiento.values.EstablecimientoId;
 import com.movie.ddd.MovieDDD.Establecimiento.values.NameEstablecimiento;
 
 public class AddEstablecimiento extends Command {
-    private final EstablecimientoId entityId;
+    private final EstablecimientoId establecimientoId;
     private final NameEstablecimiento nameEstablecimiento;
     private final Adress adress;
 
 
-    public AddEstablecimiento(EstablecimientoId entityId, NameEstablecimiento nameEstablecimiento, Adress adress) {
-        this.entityId = entityId;
+    public AddEstablecimiento(EstablecimientoId establecimientoId, NameEstablecimiento nameEstablecimiento, Adress adress) {
+        this.establecimientoId = establecimientoId;
         this.nameEstablecimiento = nameEstablecimiento;
         this.adress = adress;
     }
 
     public EstablecimientoId getEntityId() {
-        return entityId;
+        return establecimientoId;
     }
 
     public NameEstablecimiento getNameEstablecimiento() {

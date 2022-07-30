@@ -8,17 +8,18 @@ import com.movie.ddd.MovieDDD.Establecimiento.events.*;
 import com.movie.ddd.MovieDDD.Establecimiento.values.*;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Establecimiento  extends AggregateEvent<EstablecimientoId> {
-    NameEstablecimiento nameEstablecimiento;
-    Adress adress;
-    BillBoard billBoard;
+    protected NameEstablecimiento nameEstablecimiento;
+    protected Adress adress;
+    protected BillBoard billBoard;
 
-    Seller seller;
+    protected Seller seller;
 
     public Establecimiento(EstablecimientoId entityId, NameEstablecimiento nameEstablecimiento, Adress adress) {
         super(entityId);
-        appendChange(new EstablecimientoAdded(entityId, nameEstablecimiento, adress));
+        appendChange(new EstablecimientoAdded(nameEstablecimiento, adress));
     }
         private Establecimiento(EstablecimientoId establecimientoId){
             super(establecimientoId);
@@ -55,5 +56,9 @@ public class Establecimiento  extends AggregateEvent<EstablecimientoId> {
     }
     public Adress adress(){
         return adress;
+    }
+
+    public Seller seller(){
+        return seller;
     }
 }

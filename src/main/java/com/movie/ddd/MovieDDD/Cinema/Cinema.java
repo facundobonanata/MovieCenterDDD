@@ -53,6 +53,7 @@ public void AddManager(ManagerId entityId, NameManager nameManager, Email email)
     Objects.requireNonNull(movieName);
     appendChange(new MovieAdded(movieId,movieName, language, gender)).apply();
 }
+
 public void UpdateLanguageMovie(MovieId movieId, Language language){
     appendChange(new UpdatedLanguageMovie(movieId, language)).apply();
 }

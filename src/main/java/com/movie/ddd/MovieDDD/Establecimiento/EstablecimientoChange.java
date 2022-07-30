@@ -1,10 +1,8 @@
 package com.movie.ddd.MovieDDD.Establecimiento;
 
 import co.com.sofka.domain.generic.EventChange;
-import com.movie.ddd.MovieDDD.Establecimiento.events.EstablecimientoAdded;
-import com.movie.ddd.MovieDDD.Establecimiento.events.EstablecimientoNameUpdated;
-import com.movie.ddd.MovieDDD.Establecimiento.events.NameUpdated;
-import com.movie.ddd.MovieDDD.Establecimiento.events.PriceBillBoardUpdated;
+import com.movie.ddd.MovieDDD.Establecimiento.entities.Seller;
+import com.movie.ddd.MovieDDD.Establecimiento.events.*;
 
 public class EstablecimientoChange extends EventChange {
     public EstablecimientoChange(Establecimiento establecimiento){
@@ -13,6 +11,10 @@ public class EstablecimientoChange extends EventChange {
             establecimiento.nameEstablecimiento = event.getNameEstablecimiento();
             establecimiento.adress = event.getAdress();
 
+        });
+
+        apply((SellerAdded event)->{
+           establecimiento.seller = new Seller(event.getSellerId(), event.getSellerName()) ;
         });
 
         apply((NameUpdated event)->{

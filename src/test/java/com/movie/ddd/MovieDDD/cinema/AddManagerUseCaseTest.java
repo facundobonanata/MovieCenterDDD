@@ -41,6 +41,7 @@ public class AddManagerUseCaseTest {
         useCase.addRepository(repository);
 
         var events = UseCaseHandler.getInstance()
+                .setIdentifyExecutor(command.getCinemaId().value())
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
