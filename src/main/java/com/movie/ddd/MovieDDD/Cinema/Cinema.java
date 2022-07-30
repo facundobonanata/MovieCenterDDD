@@ -10,11 +10,9 @@ import com.movie.ddd.MovieDDD.Cinema.values.CinemaId;
 import com.movie.ddd.MovieDDD.Cinema.values.*;
 
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.function.BiFunction;
 
 public class Cinema extends AggregateEvent<CinemaId> {
 
@@ -39,13 +37,14 @@ public static Cinema from(CinemaId cinemaId, List<DomainEvent> events){
     events.forEach((cinema::applyEvent));
     return cinema;
 }
-public void UpdateNameManager(ManagerId managerId, Name name, CinemaId cinemaId){
-    appendChange(new UpdatedNameManager(managerId, name, cinemaId)).apply();
+public void UpdateNameManager(ManagerId managerId, Name name){
+    appendChange(new UpdatedNameManager(name)).apply();
 }
-public void AddManager(NameManager nameManager){
-        ManagerId managerId = new ManagerId();
-        appendChange(new ManagerAdded(managerId, nameManager)).apply();
-
+public void AddManager(ManagerId entityId, NameManager nameManager, Email email) {
+    Objects.requireNonNull(entityId);
+    Objects.requireNonNull(email);
+    Objects.requireNonNull(nameManager);
+    appendChange(new ManagerAdded(entityId, nameManager, email)).apply();
 }
 
     public void AddMovie(MovieId movieId, MovieName movieName, Gender gender, Language language){

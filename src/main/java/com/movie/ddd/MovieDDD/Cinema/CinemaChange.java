@@ -5,7 +5,6 @@ import com.movie.ddd.MovieDDD.Cinema.entities.Manager;
 import com.movie.ddd.MovieDDD.Cinema.entities.Movie;
 import com.movie.ddd.MovieDDD.Cinema.events.*;
 
-import java.util.HashSet;
 
 public class CinemaChange extends EventChange {
     public CinemaChange(Cinema cinema){
@@ -14,15 +13,13 @@ public class CinemaChange extends EventChange {
             cinema.seats =event.getSeats();
         });
 
-        apply((ManagerAdded event)->{
-            cinema.manager = new Manager(
-                    event.getManagerId(),
-                    event.getNameManager()
-            );
-        });
-        apply((UpdatedNameManager event)->{
+        apply((ManagerAdded event)-> {
+            cinema.manager = new Manager(event.getManagerId(), event.getNameManager(), event.getEmail());
+                });
+
+        /*apply((UpdatedNameManager event)->{
             cinema.UpdateNameManager(event.getManagerId(),event.getName(), event.getCinemaId());
-        });
+        });*/
         apply((UpdatedGenderMovie event)->{
             cinema.UpdateGenderMovie(event.getMovieId(),event.getGender());
         });
@@ -39,9 +36,9 @@ public class CinemaChange extends EventChange {
                     event.getLanguage(),
                     event.getMovieName());
         });
-        apply((UpdatedNameManager event)->{
+       /* apply((UpdatedNameManager event)->{
             cinema.UpdateNameManager(event.getManagerId(),event.getName(), event.getCinemaId());
-        });
+        });*/
 
     }
 

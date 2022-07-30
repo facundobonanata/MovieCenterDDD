@@ -8,8 +8,12 @@ import com.movie.ddd.MovieDDD.Cinema.commands.AddManager;
 
 public class AddManagerUseCase extends UseCase<RequestCommand<AddManager>, ResponseEvents> {
     @Override
-    public void executeUseCase(RequestCommand<AddManager> addManagerRequestCommand){
+    public void executeUseCase(RequestCommand<AddManager> addManagerRequestCommand) {
         var command = addManagerRequestCommand.getCommand();
         var cinema = Cinema.from(command.getCinemaId(), repository().getEventsBy(command.getCinemaId().value()));
+
+        cinema.AddManager(command.getEntityId(), command.getNameManager(), command.getEmail());
+        emit().onResponse(new ResponseEvents(cinema.getUncommittedChanges()));
+
     }
 }
