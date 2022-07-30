@@ -1,18 +1,19 @@
-package com.movie.ddd.MovieDDD.Cinema.values;
+package com.movie.ddd.MovieDDD.Bill.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Name implements ValueObject<String> {
+public class ClientAdress implements ValueObject<String> {
     private final String value;
-    public Name(String value) {
+
+    public ClientAdress(String value){
         this.value = Objects.requireNonNull(value);
         if(this.value.isBlank()){
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
+            throw new IllegalArgumentException("La dirección no debe estar vacía");
         }
-        if (this.value.length() <= 2){
-            throw new IllegalArgumentException("El nombre debe tener más de dos caracteres");
+        if(this.value.length() >= 200){
+            throw new IllegalArgumentException("La dirección no debe tener más de 200 caracteres");
         }
     }
 
@@ -25,8 +26,8 @@ public class Name implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Name nombre = (Name) o;
-        return Objects.equals(value, nombre.value);
+        ClientAdress clientAdress = (ClientAdress) o;
+        return Objects.equals(value, clientAdress.value);
     }
 
     @Override
@@ -34,3 +35,4 @@ public class Name implements ValueObject<String> {
         return Objects.hash(value);
     }
 }
+

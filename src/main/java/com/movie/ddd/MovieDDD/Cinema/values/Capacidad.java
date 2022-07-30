@@ -4,20 +4,22 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Name implements ValueObject<String> {
-    private final String value;
-    public Name(String value) {
+public class Capacidad implements ValueObject<Integer> {
+
+    private final Integer value;
+
+    public Capacidad(Integer value){
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()){
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
+        if(this.value <= 20){
+            throw new IllegalArgumentException("La capacidad debe ser mayor a 20");
         }
-        if (this.value.length() <= 2){
-            throw new IllegalArgumentException("El nombre debe tener más de dos caracteres");
+        if(this.value == 0){
+            throw new IllegalArgumentException("La capacidad no debe ser cero");
         }
     }
 
     @Override
-    public String value() {
+    public Integer value() {
         return value;
     }
 
@@ -25,8 +27,8 @@ public class Name implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Name nombre = (Name) o;
-        return Objects.equals(value, nombre.value);
+        Capacidad capacidad = (Capacidad) o;
+        return Objects.equals(value, capacidad.value);
     }
 
     @Override

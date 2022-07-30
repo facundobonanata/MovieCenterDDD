@@ -1,6 +1,8 @@
 package com.movie.ddd.MovieDDD.Cinema;
 
 import co.com.sofka.domain.generic.EventChange;
+import com.movie.ddd.MovieDDD.Cinema.entities.Manager;
+import com.movie.ddd.MovieDDD.Cinema.entities.Movie;
 import com.movie.ddd.MovieDDD.Cinema.events.*;
 
 import java.util.HashSet;
@@ -8,16 +10,18 @@ import java.util.HashSet;
 public class CinemaChange extends EventChange {
     public CinemaChange(Cinema cinema){
         apply((CinemaAdded event) ->{
-            cinema.seats = new HashSet<>();
-            cinema.movie =event.getMovie();
-            cinema.manager=event.getManager();
-            cinema.name =event.getName();
+            cinema.capacidad =event.getCapacidad();
+            cinema.seats =event.getSeats();
+        });
+
+        apply((ManagerAdded event)->{
+            cinema.manager = new Manager(
+                    event.getManagerId(),
+                    event.getNameManager()
+            );
         });
         apply((UpdatedNameManager event)->{
             cinema.UpdateNameManager(event.getManagerId(),event.getName(), event.getCinemaId());
-        });
-        apply((ManagerAdded event)->{
-            cinema.AddManager(event.getManagerId(),event.getName());
         });
         apply((UpdatedGenderMovie event)->{
             cinema.UpdateGenderMovie(event.getMovieId(),event.getGender());
@@ -26,7 +30,14 @@ public class CinemaChange extends EventChange {
             cinema.UpdateLanguageMovie(event.getMovieId(),event.getLanguage());
         });
         apply((MovieAdded event)->{
-            cinema.AddMovie(event.getMovieId(),event.getGender(), event.getLanguage());
+            if(cinema.movie != null){
+                throw new IllegalArgumentException("Asigne una pelicula");
+            }
+            cinema.movie = new Movie(
+                    event.getMovieId(),
+                    event.getGender(),
+                    event.getLanguage(),
+                    event.getMovieName());
         });
         apply((UpdatedNameManager event)->{
             cinema.UpdateNameManager(event.getManagerId(),event.getName(), event.getCinemaId());

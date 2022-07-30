@@ -1,4 +1,4 @@
-package com.movie.ddd.MovieDDD.Cinema.values;
+package com.movie.ddd.MovieDDD.Bill.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
@@ -25,8 +25,8 @@ public class Name implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Name nombre = (Name) o;
-        return Objects.equals(value, nombre.value);
+        Name name = (Name) o;
+        return Objects.equals(value, name.value);
     }
 
     @Override

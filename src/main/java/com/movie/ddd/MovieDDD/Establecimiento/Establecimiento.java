@@ -2,7 +2,6 @@ package com.movie.ddd.MovieDDD.Establecimiento;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.movie.ddd.MovieDDD.Cliente.entities.Bill;
 import com.movie.ddd.MovieDDD.Establecimiento.entities.BillBoard;
 import com.movie.ddd.MovieDDD.Establecimiento.entities.Seller;
 import com.movie.ddd.MovieDDD.Establecimiento.events.*;

@@ -4,21 +4,23 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.movie.ddd.MovieDDD.Cinema.values.Gender;
 import com.movie.ddd.MovieDDD.Cinema.values.Language;
 import com.movie.ddd.MovieDDD.Cinema.values.MovieId;
+import com.movie.ddd.MovieDDD.Cinema.values.MovieName;
 
 public class MovieAdded extends DomainEvent {
-    private final MovieId movieId;
     private final Language language;
     private final Gender gender;
+    private final MovieName movieName;
+    private final MovieId movieId;
 
-    public MovieAdded(MovieId movieId, Language language, Gender gender) {
+    public MovieAdded(MovieId movieId, MovieName movieName, Language language, Gender gender) {
         super("com.movie.ddd.MovieDDD.cinema.movieadded");
-        this.movieId = movieId;
+
         this.language = language;
         this.gender = gender;
-    }
+        this.movieName=movieName;
+        this.movieId=movieId;
 
-    public MovieId getMovieId() {
-        return movieId;
+
     }
 
     public Language getLanguage() {
@@ -28,4 +30,13 @@ public class MovieAdded extends DomainEvent {
     public Gender getGender() {
         return gender;
     }
+
+    public MovieName getMovieName() {
+        return movieName;
+    }
+
+    public MovieId getMovieId() {
+        return movieId;
+    }
 }
+

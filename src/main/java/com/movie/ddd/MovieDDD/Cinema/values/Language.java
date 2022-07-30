@@ -17,10 +17,6 @@ public class Language implements ValueObject<String> {
         }
     }
 
-    public Language modificarIdioma(String idiomaModificar){
-        return new Language(idiomaModificar);
-    }
-
     @Override
     public String value() {
         return value;
