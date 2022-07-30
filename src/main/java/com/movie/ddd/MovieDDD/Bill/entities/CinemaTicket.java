@@ -6,6 +6,8 @@ import com.movie.ddd.MovieDDD.Bill.values.Description;
 import com.movie.ddd.MovieDDD.Bill.values.ExpirationDate;
 import com.movie.ddd.MovieDDD.Bill.values.Value;
 
+import java.util.Objects;
+
 public class CinemaTicket extends Entity<CinemaTicketId> {
     private ExpirationDate expirationDate;
     private Value value;
@@ -16,6 +18,14 @@ public class CinemaTicket extends Entity<CinemaTicketId> {
         this.expirationDate = expirationDate;
         this.value=value;
         this.description=description;
+    }
+
+    public void updateDescription(Description description){
+        this.description = Objects.requireNonNull(description);
+    }
+
+    public void updateValue(Value valor){
+        this.value = Objects.requireNonNull(value);
     }
 
     public ExpirationDate getExpirationDate() {
