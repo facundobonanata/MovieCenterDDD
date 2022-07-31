@@ -25,12 +25,6 @@ public class CinemaChange extends EventChange {
             cinema.UpdateEmailManager(event.getManagerId(), event.getEmail(), event.getCinemaId());
         });
 
-        apply((UpdatedGenderMovie event)->{
-            cinema.UpdateGenderMovie(event.getMovieId(),event.getGender());
-        });
-        apply((UpdatedLanguageMovie event)->{
-            cinema.UpdateLanguageMovie(event.getMovieId(),event.getLanguage());
-        });
         apply((MovieAdded event)->{
             cinema.movie = new Movie(
                     event.getMovieId(),

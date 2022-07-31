@@ -13,8 +13,6 @@ public class ExpirationDate implements ValueObject<String> {
     public ExpirationDate(int day, int month, int year) {
         try{
             date = LocalDate.of(year,month,day);
-            if(date.isBefore(LocalDate.now())){
-                throw new IllegalArgumentException("La membresia esat vencida");            }
         }catch (DateTimeException ex){
             throw  new IllegalArgumentException(ex.getMessage());
         }

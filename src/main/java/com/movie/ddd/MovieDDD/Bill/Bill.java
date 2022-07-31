@@ -22,6 +22,7 @@ public class Bill extends AggregateEvent<BillId> {
     protected EstablecimientoId establecimientoId;
     protected Client client;
     protected Value value;
+    protected CinemaTicket cinemaTicket;
 
     public Bill(BillId entityId, EstablecimientoId establecimientoId, Client client) {
         super(entityId);
@@ -47,7 +48,7 @@ public class Bill extends AggregateEvent<BillId> {
         appendChange(new ClientAdded(clientId, clientAdress, name)).apply();
 
     }
-        public void agregarTicket(CinemaTicketId entityId, Description description, Value value, ExpirationDate expirationDate){
+        public void AddCinemaTicket(CinemaTicketId entityId, Description description, Value value, ExpirationDate expirationDate){
         appendChange(new TicketAdded(entityId, description, value, expirationDate)).apply();
     }
     public EstablecimientoId establecimientoId(){
@@ -61,6 +62,9 @@ public class Bill extends AggregateEvent<BillId> {
     }
     public void setValue(Value value){
         this.value=value;
+    }
+    public CinemaTicket cinemaTicket(){
+        return cinemaTicket;
     }
 
 

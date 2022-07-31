@@ -59,12 +59,6 @@ public void UpdateEmailManager(ManagerId managerId, Email email, CinemaId cinema
     appendChange(new MovieAdded(movieId,movieName, language, gender)).apply();
 }
 
-public void UpdateLanguageMovie(MovieId movieId, Language language){
-    appendChange(new UpdatedLanguageMovie(movieId, language)).apply();
-}
-    public void UpdateGenderMovie(MovieId movieId, Gender gender){
-        appendChange(new UpdatedGenderMovie(movieId, gender)).apply();
-    }
     public Movie movieId(){
     return movie;
     }
