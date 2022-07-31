@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class AddEstablecimientoUseCaseTest {
+class CreateEstablecimientoUseCaseTest {
 
      @Test
     public void addNewEstablecimiento(){

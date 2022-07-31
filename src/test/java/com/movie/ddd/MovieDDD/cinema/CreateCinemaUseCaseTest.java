@@ -17,7 +17,7 @@ import java.util.Set;
 
 
 
-public class AddCinemaUseCaseTest {
+public class CreateCinemaUseCaseTest {
     @Test
     public void addNewCinema(){
 

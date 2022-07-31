@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class AddBillUseCaseTest {
+public class CreateBillUseCaseTest {
     @Test
     void addNewBill() {
 
