@@ -5,6 +5,8 @@ import com.movie.ddd.MovieDDD.Cinema.values.Email;
 import com.movie.ddd.MovieDDD.Cinema.values.ManagerId;
 import com.movie.ddd.MovieDDD.Cinema.values.NameManager;
 
+import java.util.Objects;
+
 
 public class Manager extends Entity<ManagerId> {
     private NameManager nameManager;
@@ -20,9 +22,16 @@ public class Manager extends Entity<ManagerId> {
     public NameManager getNameManager() {
         return nameManager;
     }
+    public void UpdateNameManager(String updateNameM) {
+        this.nameManager = nameManager.UpdateNameManager(updateNameM);
+    }
+
 
     public Email getEmail() {
         return email;
+    }
+    public NameManager nameManager(){
+        return nameManager;
     }
 }
 

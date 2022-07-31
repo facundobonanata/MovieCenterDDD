@@ -17,8 +17,9 @@ public class NameManager implements ValueObject<String> {
         }
     }
 
-    public NameManager modificarNombre(String nombreModificar){
-        return new NameManager(nombreModificar);
+    public NameManager UpdateNameManager(String nameupdate){
+
+        return new NameManager(nameupdate);
     }
 
     @Override

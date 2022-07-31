@@ -37,8 +37,9 @@ public static Cinema from(CinemaId cinemaId, List<DomainEvent> events){
     events.forEach((cinema::applyEvent));
     return cinema;
 }
-public void UpdateNameManager(ManagerId managerId, Name name){
-    appendChange(new UpdatedNameManager(name)).apply();
+public void UpdateNameManager(ManagerId managerId, NameManager nameManager)
+{
+    appendChange(new UpdatedNameManager(nameManager)).apply();
 }
 public void AddManager(ManagerId entityId, NameManager nameManager, Email email) {
     Objects.requireNonNull(entityId);

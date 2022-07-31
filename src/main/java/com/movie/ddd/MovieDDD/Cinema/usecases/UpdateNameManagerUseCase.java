@@ -12,7 +12,7 @@ public class UpdateNameManagerUseCase extends UseCase<RequestCommand <UpdateName
         var command = updateNameManagerRequestCommand.getCommand();
         var cinema = Cinema.from(command.getCinemaId(), repository().getEventsBy(command.getCinemaId().value()));
 
-        cinema.UpdateNameManager(command.getManagerId(), command.getName());
+        cinema.UpdateNameManager(command.getManagerId(), command.getNameManager());
         emit().onResponse(new ResponseEvents(cinema.getUncommittedChanges()));
     }
 }

@@ -4,11 +4,12 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.movie.ddd.MovieDDD.Cinema.commands.AddManager;
+import com.movie.ddd.MovieDDD.Cinema.commands.UpdateNameManager;
 import com.movie.ddd.MovieDDD.Cinema.entities.Seat;
 import com.movie.ddd.MovieDDD.Cinema.events.CinemaAdded;
 import com.movie.ddd.MovieDDD.Cinema.events.ManagerAdded;
-import com.movie.ddd.MovieDDD.Cinema.usecases.AddManagerUseCase;
+import com.movie.ddd.MovieDDD.Cinema.events.UpdatedNameManager;
+import com.movie.ddd.MovieDDD.Cinema.usecases.UpdateNameManagerUseCase;
 import com.movie.ddd.MovieDDD.Cinema.values.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,39 +25,41 @@ import java.util.Set;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class AddManagerUseCaseTest {
+public class UpdateNameManagerUseCaseTest {
 
     @Mock
     DomainEventRepository repository;
 
     @InjectMocks
-    AddManagerUseCase useCase;
+    UpdateNameManagerUseCase useCase;
 
     @Test
-    void addManager(){
+    void updateNameManager(){
 
-        var cinemaId=new CinemaId();
-        var command = new AddManager(cinemaId, new ManagerId(), new NameManager("Alex"), new Email("AlexGmail"));
+        var cinemaId = CinemaId.of("Movie1");
+        var command = new UpdateNameManager(cinemaId, new ManagerId(), new NameManager("Cristiano Siu"));
         when(repository.getEventsBy(cinemaId.value())).thenReturn(history());
         useCase.addRepository(repository);
 
         var events = UseCaseHandler.getInstance()
-                .setIdentifyExecutor(command.getCinemaId().value())
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
 
-        var event= (ManagerAdded) events.get(0);
-        Assertions.assertEquals("Alex", event.getNameManager().value());
-        Assertions.assertEquals("AlexGmail", event.getEmail().value());
+        var event = (UpdatedNameManager)events.get(0);
+        Assertions.assertEquals("Cristiano Siu", event.getNameManager().value());
+
+
     }
     private List<DomainEvent> history() {
         var capacidad = new Capacidad(72);
         Set<Seat> seats = new HashSet<>();
+        var managerId = ManagerId.of("Movie1");
+        var name = new NameManager("Argelio Rodolfino");
+        var email = new Email("Areglito@gmail.com");
         return List.of(
-                new CinemaAdded(capacidad, seats)
-        );
+                new CinemaAdded(capacidad, seats),
+                new ManagerAdded(managerId, name, email));
+
     }
-
 }
-

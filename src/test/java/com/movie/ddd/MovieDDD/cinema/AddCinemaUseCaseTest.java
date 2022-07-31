@@ -23,7 +23,7 @@ public class AddCinemaUseCaseTest {
 
         //arrange
         var id = new CinemaId();
-        var capacidad = new Capacidad(25);
+        var capacidad = new Capacidad(72);
         Set<Seat> seats = new HashSet<>();
 
         var command = new AddCinema(id, capacidad, seats);
@@ -39,7 +39,7 @@ public class AddCinemaUseCaseTest {
         //assert
         CinemaAdded event = (CinemaAdded) events.get(0);
 
-        Assertions.assertEquals(25, event.getCapacidad().value());
+        Assertions.assertEquals(72, event.getCapacidad().value());
         Assertions.assertEquals(new HashSet<>().size(), event.getSeats().size());
     }
 
