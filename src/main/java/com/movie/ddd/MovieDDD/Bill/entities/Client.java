@@ -12,7 +12,6 @@ public class Client extends Entity<ClientId> {
     private ClientAdress adress;
 
     public Client(ClientId entityId){
-
         super(entityId);
     }
     public Client(ClientId entityId, Name name, ClientAdress adress){

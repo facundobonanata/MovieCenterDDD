@@ -5,12 +5,18 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.movie.ddd.MovieDDD.Bill.entities.CinemaTicket;
 import com.movie.ddd.MovieDDD.Bill.entities.Client;
 import com.movie.ddd.MovieDDD.Bill.events.BillAdded;
+import com.movie.ddd.MovieDDD.Bill.events.ClientAdded;
 import com.movie.ddd.MovieDDD.Bill.events.ClientNameUpdated;
 import com.movie.ddd.MovieDDD.Bill.events.TicketAdded;
 import com.movie.ddd.MovieDDD.Bill.values.*;
+import com.movie.ddd.MovieDDD.Cinema.events.ManagerAdded;
+import com.movie.ddd.MovieDDD.Cinema.values.Email;
+import com.movie.ddd.MovieDDD.Cinema.values.ManagerId;
+import com.movie.ddd.MovieDDD.Cinema.values.NameManager;
 import com.movie.ddd.MovieDDD.Establecimiento.values.EstablecimientoId;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Bill extends AggregateEvent<BillId> {
     protected EstablecimientoId establecimientoId;
@@ -34,8 +40,14 @@ public class Bill extends AggregateEvent<BillId> {
     public void UpdateClientName(Client client, Name name){
         appendChange(new ClientNameUpdated(client, name)).apply();
     }
+    public void AddClient(ClientId clientId, Name name, ClientAdress clientAdress) {
+        Objects.requireNonNull(clientId);
+        Objects.requireNonNull(clientAdress);
+        Objects.requireNonNull(name);
+        appendChange(new ClientAdded(clientId, clientAdress, name)).apply();
 
-    public void agregarTicket(CinemaTicketId entityId, Description description, Value value, ExpirationDate expirationDate){
+    }
+        public void agregarTicket(CinemaTicketId entityId, Description description, Value value, ExpirationDate expirationDate){
         appendChange(new TicketAdded(entityId, description, value, expirationDate)).apply();
     }
     public EstablecimientoId establecimientoId(){
