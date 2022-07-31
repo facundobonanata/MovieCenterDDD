@@ -9,10 +9,6 @@ import com.movie.ddd.MovieDDD.Bill.events.ClientAdded;
 import com.movie.ddd.MovieDDD.Bill.events.ClientNameUpdated;
 import com.movie.ddd.MovieDDD.Bill.events.TicketAdded;
 import com.movie.ddd.MovieDDD.Bill.values.*;
-import com.movie.ddd.MovieDDD.Cinema.events.ManagerAdded;
-import com.movie.ddd.MovieDDD.Cinema.values.Email;
-import com.movie.ddd.MovieDDD.Cinema.values.ManagerId;
-import com.movie.ddd.MovieDDD.Cinema.values.NameManager;
 import com.movie.ddd.MovieDDD.Establecimiento.values.EstablecimientoId;
 
 import java.util.List;

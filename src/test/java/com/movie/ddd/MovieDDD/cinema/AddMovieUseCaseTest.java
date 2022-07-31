@@ -32,23 +32,19 @@ public class AddMovieUseCaseTest {
     @InjectMocks
     AddMovieUseCase useCase;
 
-    //arrange
     @Test
     void AddMovieC(){
 
-        //arrange
         var cinemaId = new CinemaId();
         var command = new AddMovie(new MovieId(), new MovieName("Avengers"), cinemaId, new Gender("Accion"), new Language("Español España"));
         when(repository.getEventsBy(cinemaId.value())).thenReturn(history());
         useCase.addRepository(repository);
 
-        //act
         var events = UseCaseHandler.getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
 
-        //assert
         var event = (MovieAdded)events.get(0);
         Assertions.assertEquals("Avengers", event.getMovieName().value());
         Assertions.assertEquals("Español España", event.getLanguage().value());
@@ -56,10 +52,10 @@ public class AddMovieUseCaseTest {
     }
 
     private List<DomainEvent> history() {
-        var capacidad = new Capacidad(72);
+        var capacity = new Capacity(72);
         Set<Seat> seats = new HashSet<>();
         return List.of(
-                new CinemaAdded(capacidad, seats)
+                new CinemaAdded(capacity, seats)
         );
     }
 

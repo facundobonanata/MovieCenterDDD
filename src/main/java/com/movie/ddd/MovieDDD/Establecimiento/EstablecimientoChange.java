@@ -1,6 +1,9 @@
 package com.movie.ddd.MovieDDD.Establecimiento;
 
 import co.com.sofka.domain.generic.EventChange;
+import com.movie.ddd.MovieDDD.Cinema.entities.Movie;
+import com.movie.ddd.MovieDDD.Cinema.events.MovieAdded;
+import com.movie.ddd.MovieDDD.Establecimiento.entities.BillBoard;
 import com.movie.ddd.MovieDDD.Establecimiento.entities.Seller;
 import com.movie.ddd.MovieDDD.Establecimiento.events.*;
 
@@ -25,8 +28,9 @@ public class EstablecimientoChange extends EventChange {
             establecimiento.UpdateEstablecimientoName(event.getEstablecimientoId(), event.getNameEstablecimiento());
         });
 
-        apply((PriceBillBoardUpdated event)->{
-            establecimiento.UpdatePriceBillBoard(event.getEstablecimientoId(),event.getPrice());
+        apply((BillBoardAdded event)->{
+            establecimiento.billBoard = new BillBoard(event.getBillBoardId(), event.getPrice(), event.getMovieBoard(), event.getDateTime());
         });
+
     }
 }

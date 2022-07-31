@@ -1,19 +1,16 @@
 package com.movie.ddd.MovieDDD.Cinema.entities;
 
 import co.com.sofka.domain.generic.Entity;
-import com.movie.ddd.MovieDDD.Cinema.values.Anchura;
 import com.movie.ddd.MovieDDD.Cinema.values.SeatId;
 
 public class Seat extends Entity<SeatId> {
-    private Anchura anchura;
+    private SeatId seatId;
 
-    public Seat(SeatId entityId, Anchura anchura) {
+    public Seat(SeatId entityId) {
         super(entityId);
-        this.anchura = anchura;
     }
 
-
-    public Anchura anchura() {
-        return anchura;
+    public SeatId getSeatId() {
+        return seatId;
     }
 }

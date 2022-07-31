@@ -9,12 +9,6 @@ public class NameManager implements ValueObject<String> {
 
     public NameManager(String value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()){
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
-        }
-        if (this.value.length() <= 2){
-            throw new IllegalArgumentException("El nombre debe tener más de dos caracteres");
-        }
     }
 
     public NameManager UpdateNameManager(String nameupdate){

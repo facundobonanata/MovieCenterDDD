@@ -13,7 +13,7 @@ public class AddCinemaUseCase extends UseCase<RequestCommand<AddCinema>, Respons
     public void executeUseCase(RequestCommand<AddCinema> addCinemaRequestCommand) {
 
         var command = addCinemaRequestCommand.getCommand();
-        var cinema = new Cinema(command.getCinemaId(), command.getCapacidad(), command.getSeats());
+        var cinema = new Cinema(command.getCinemaId(), command.getCapacity(), command.getSeats());
 
         emit().onResponse(new ResponseEvents(cinema.getUncommittedChanges()
         ));

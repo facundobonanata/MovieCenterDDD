@@ -52,13 +52,13 @@ public class UpdateNameManagerUseCaseTest {
 
     }
     private List<DomainEvent> history() {
-        var capacidad = new Capacidad(72);
+        var capacity = new Capacity(72);
         Set<Seat> seats = new HashSet<>();
         var managerId = ManagerId.of("Movie1");
         var name = new NameManager("Argelio Rodolfino");
         var email = new Email("Areglito@gmail.com");
         return List.of(
-                new CinemaAdded(capacidad, seats),
+                new CinemaAdded(capacity, seats),
                 new ManagerAdded(managerId, name, email));
 
     }

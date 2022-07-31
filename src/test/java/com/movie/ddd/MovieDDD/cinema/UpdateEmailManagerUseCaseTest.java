@@ -9,7 +9,6 @@ import com.movie.ddd.MovieDDD.Cinema.entities.Seat;
 import com.movie.ddd.MovieDDD.Cinema.events.CinemaAdded;
 import com.movie.ddd.MovieDDD.Cinema.events.ManagerAdded;
 import com.movie.ddd.MovieDDD.Cinema.events.UpdatedEmailManager;
-import com.movie.ddd.MovieDDD.Cinema.events.UpdatedNameManager;
 import com.movie.ddd.MovieDDD.Cinema.usecases.UpdateEmailManagerUseCase;
 import com.movie.ddd.MovieDDD.Cinema.values.*;
 import org.junit.jupiter.api.Assertions;
@@ -51,13 +50,13 @@ public class UpdateEmailManagerUseCaseTest {
 
     }
     private List<DomainEvent> history() {
-        var capacidad = new Capacidad(72);
+        var capacity = new Capacity(72);
         Set<Seat> seats = new HashSet<>();
         var managerId = ManagerId.of("Movie1");
         var name = new NameManager("Argelio Rodolfino");
         var email = new Email("Areglito@gmail.com");
         return List.of(
-                new CinemaAdded(capacidad, seats),
+                new CinemaAdded(capacity, seats),
                 new ManagerAdded(managerId, name, email));
 
     }

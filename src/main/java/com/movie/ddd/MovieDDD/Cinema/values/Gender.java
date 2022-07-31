@@ -9,18 +9,7 @@ public class Gender implements ValueObject<String> {
 
     public Gender(String value){
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()){
-            throw new IllegalArgumentException("El género de la película no puede estar vacío");
-        }
-        if(this.value.length() >= 20){
-            throw new IllegalArgumentException("El género de la película no puede tener más de 20 caracteres");
-        }
     }
-
-    public Gender modificarGenero(String generoModificar){
-        return new Gender(generoModificar);
-    }
-
     @Override
     public String value() {
         return value;

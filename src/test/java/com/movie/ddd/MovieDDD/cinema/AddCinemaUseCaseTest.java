@@ -21,25 +21,22 @@ public class AddCinemaUseCaseTest {
     @Test
     public void addNewCinema(){
 
-        //arrange
         var id = new CinemaId();
-        var capacidad = new Capacidad(72);
+        var capacity = new Capacity(72);
         Set<Seat> seats = new HashSet<>();
 
-        var command = new AddCinema(id, capacidad, seats);
+        var command = new AddCinema(id, capacity, seats);
 
         var useCase = new AddCinemaUseCase();
 
-        //act
         List<DomainEvent> events = UseCaseHandler.getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
 
-        //assert
         CinemaAdded event = (CinemaAdded) events.get(0);
 
-        Assertions.assertEquals(72, event.getCapacidad().value());
+        Assertions.assertEquals(72, event.getCapacity().value());
         Assertions.assertEquals(new HashSet<>().size(), event.getSeats().size());
     }
 

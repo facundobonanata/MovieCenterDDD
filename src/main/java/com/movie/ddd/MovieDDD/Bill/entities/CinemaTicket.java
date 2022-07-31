@@ -20,14 +20,6 @@ public class CinemaTicket extends Entity<CinemaTicketId> {
         this.description=description;
     }
 
-    public void updateDescription(Description description){
-        this.description = Objects.requireNonNull(description);
-    }
-
-    public void updateValue(Value valor){
-        this.value = Objects.requireNonNull(value);
-    }
-
     public ExpirationDate getExpirationDate() {
         return expirationDate;
     }

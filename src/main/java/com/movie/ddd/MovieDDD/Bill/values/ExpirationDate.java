@@ -16,10 +16,10 @@ public class ExpirationDate implements ValueObject<String> {
         }catch (DateTimeException ex){
             throw  new IllegalArgumentException(ex.getMessage());
         }
-        value = generarFormato();
+        value = generateFormat();
     }
 
-    private String generarFormato(){
+    private String generateFormat(){
         return date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 

@@ -51,10 +51,10 @@ public class AddManagerUseCaseTest {
         Assertions.assertEquals("AlexGmail", event.getEmail().value());
     }
     private List<DomainEvent> history() {
-        var capacidad = new Capacidad(72);
+        var capacity = new Capacity(72);
         Set<Seat> seats = new HashSet<>();
         return List.of(
-                new CinemaAdded(capacidad, seats)
+                new CinemaAdded(capacity, seats)
         );
     }
 

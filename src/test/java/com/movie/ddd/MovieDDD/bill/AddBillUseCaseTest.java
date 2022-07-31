@@ -27,13 +27,11 @@ public class AddBillUseCaseTest {
         var command = new AddBill(id, establecimientoId, client);
         var useCase = new AddBillUseCase();
 
-        //act
         List<DomainEvent> events = UseCaseHandler.getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
 
-        //assert
         BillAdded event = (BillAdded) events.get(0);
 
         Assertions.assertEquals(EstablecimientoId.of("Movie center Portones"), event.getEstablecimientoId());

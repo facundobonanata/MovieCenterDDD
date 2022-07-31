@@ -16,15 +16,15 @@ import java.util.Set;
 
 public class Cinema extends AggregateEvent<CinemaId> {
 
-    protected Capacidad capacidad;
+    protected Capacity capacity;
     protected Manager manager;
     protected Movie movie;
     protected Set<Seat> seats;
 
 
-    public Cinema(CinemaId entityId,Capacidad capacidad, Set<Seat> seats){
+    public Cinema(CinemaId entityId, Capacity capacity, Set<Seat> seats){
     super(entityId);
-    appendChange(new CinemaAdded(capacidad, seats)).apply();
+    appendChange(new CinemaAdded(capacity, seats)).apply();
 
 }
 private Cinema(CinemaId entityId){
@@ -37,8 +37,7 @@ public static Cinema from(CinemaId cinemaId, List<DomainEvent> events){
     events.forEach((cinema::applyEvent));
     return cinema;
 }
-public void UpdateNameManager(ManagerId managerId, NameManager nameManager)
-{
+public void UpdateNameManager(ManagerId managerId, NameManager nameManager) {
     appendChange(new UpdatedNameManager(nameManager)).apply();
 }
 public void AddManager(ManagerId entityId, NameManager nameManager, Email email) {
@@ -65,8 +64,8 @@ public void UpdateEmailManager(ManagerId managerId, Email email, CinemaId cinema
     public Manager manager(){
     return manager;
     }
-    public Capacidad capacidad(){
-        return capacidad;
+    public Capacity capacity(){
+        return capacity;
     }
 
     public Set<Seat> seats(){

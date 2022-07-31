@@ -23,10 +23,6 @@ public class Client extends Entity<ClientId> {
         this.name = Objects.requireNonNull(name);
     }
 
-    public void updateClientAdress(ClientAdress adress){
-        this.adress = Objects.requireNonNull(adress);
-    }
-
     public Name getName() {
         return name;
     }

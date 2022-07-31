@@ -37,6 +37,7 @@ public class AddClientUseCaseTest {
     @Test
     void addClient() {
 
+
         var billId = new BillId();
         var command = new AddClient(billId, new ClientId(), new ClientAdress("Camino carrasco"), new Name("Sebastian"));
         when(repository.getEventsBy(billId.value())).thenReturn(history());

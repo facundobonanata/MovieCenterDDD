@@ -9,12 +9,6 @@ public class ClientAdress implements ValueObject<String> {
 
     public ClientAdress(String value){
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()){
-            throw new IllegalArgumentException("La dirección no debe estar vacía");
-        }
-        if(this.value.length() >= 200){
-            throw new IllegalArgumentException("La dirección no debe tener más de 200 caracteres");
-        }
     }
 
     @Override

@@ -10,7 +10,6 @@ import com.movie.ddd.MovieDDD.Bill.events.BillAdded;
 import com.movie.ddd.MovieDDD.Bill.events.TicketAdded;
 import com.movie.ddd.MovieDDD.Bill.usecases.AddTicketUseCase;
 import com.movie.ddd.MovieDDD.Bill.values.*;
-import com.movie.ddd.MovieDDD.Establecimiento.values.Adress;
 import com.movie.ddd.MovieDDD.Establecimiento.values.EstablecimientoId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -35,19 +34,16 @@ public class AddTicketUseCaseTest {
     @Test
     void addTicket(){
 
-        //arrange
         var billId = BillId.of("0021");
         var command = new AddTicket(billId, CinemaTicketId.of("01"), new Description("Consumo del comprador: "), new Value(300), new ExpirationDate(23,07,2022));
         when(repository.getEventsBy(billId.value())).thenReturn(history());
         useCase.addRepository(repository);
 
-        //act
         var events = UseCaseHandler.getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
 
-        //assert
         var event = (TicketAdded) events.get(0);
         Assertions.assertEquals(300, event.getValue().value());
 

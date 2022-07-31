@@ -7,15 +7,8 @@ import java.util.Objects;
 public class Value implements ValueObject<Integer> {
     private final Integer value;
 
-    public Value(Integer value){
+    public Value(Integer value) {
         this.value = value;
-        if(this.value < 0){
-            throw new IllegalArgumentException("El valor no debe ser negativo");
-        }
-    }
-
-    public Value modificarValor(Integer valorModificar){
-        return new Value(valorModificar);
     }
 
     @Override

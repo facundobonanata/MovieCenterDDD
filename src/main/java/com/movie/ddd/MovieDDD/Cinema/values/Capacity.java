@@ -4,18 +4,12 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Capacidad implements ValueObject<Integer> {
+public class Capacity implements ValueObject<Integer> {
 
     private final Integer value;
 
-    public Capacidad(Integer value){
+    public Capacity(Integer value){
         this.value = Objects.requireNonNull(value);
-        if(this.value <= 20){
-            throw new IllegalArgumentException("La capacidad debe ser mayor a 20");
-        }
-        if(this.value == 0){
-            throw new IllegalArgumentException("La capacidad no debe ser cero");
-        }
     }
 
     @Override
@@ -27,8 +21,8 @@ public class Capacidad implements ValueObject<Integer> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Capacidad capacidad = (Capacidad) o;
-        return Objects.equals(value, capacidad.value);
+        Capacity capacity = (Capacity) o;
+        return Objects.equals(value, capacity.value);
     }
 
     @Override

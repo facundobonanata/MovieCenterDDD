@@ -10,9 +10,6 @@ public class DateTime implements ValueObject<String> {
 
     public DateTime(String value) {
         this.value = Objects.requireNonNull(value);
-        if (this.value.isBlank()){
-            throw new IllegalArgumentException("Horario no establecido");
-        }
     }
 
     public String value() {

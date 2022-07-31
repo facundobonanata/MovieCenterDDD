@@ -38,10 +38,11 @@ public class Establecimiento  extends AggregateEvent<EstablecimientoId> {
     public void UpdateName(SellerId sellerId, SellerName sellerName){
         appendChange(new NameUpdated(sellerId, sellerName)).apply();
     }
-
-    public void UpdatePriceBillBoard(EstablecimientoId establecimientoId, Price price){
-        appendChange(new PriceBillBoardUpdated(price, establecimientoId)).apply();
+    public void AddBillBoard(BillBoardId billBoardId, Price price, MovieBoard movieBoard, DateTime dateTime){
+        appendChange(new BillBoardAdded(price, billBoardId, movieBoard, dateTime));
     }
+
+
     public void AddSeller(SellerId sellerId, SellerName sellerName){
         appendChange(new SellerAdded(sellerId, sellerName)).apply();
     }

@@ -9,12 +9,6 @@ public class Language implements ValueObject<String> {
 
     public Language(String value){
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()){
-            throw new IllegalArgumentException("El idioma no puede estar vacío");
-        }
-        if(this.value.length() > 15){
-            throw new IllegalArgumentException("El idioma no puede tener más de 14 caracteres");
-        }
     }
 
     @Override

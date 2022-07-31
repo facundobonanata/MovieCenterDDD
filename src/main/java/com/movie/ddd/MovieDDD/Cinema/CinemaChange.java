@@ -9,7 +9,7 @@ import com.movie.ddd.MovieDDD.Cinema.events.*;
 public class CinemaChange extends EventChange {
     public CinemaChange(Cinema cinema){
         apply((CinemaAdded event) ->{
-            cinema.capacidad =event.getCapacidad();
+            cinema.capacity =event.getCapacity();
             cinema.seats =event.getSeats();
         });
 
@@ -32,10 +32,6 @@ public class CinemaChange extends EventChange {
                     event.getLanguage(),
                     event.getMovieName());
         });
-       /* apply((UpdatedNameManager event)->{
-            cinema.UpdateNameManager(event.getManagerId(),event.getName(), event.getCinemaId());
-        });*/
-
     }
 
 }

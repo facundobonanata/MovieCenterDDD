@@ -9,9 +9,7 @@ public class Price implements ValueObject<String> {
 
     public Price(String value) {
         this.value = Objects.requireNonNull(value);
-        if (this.value.isBlank()){
-            throw new IllegalArgumentException("Precio no relacionado");
-        }
+
     }
 
     public String value() {

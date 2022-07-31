@@ -8,12 +8,6 @@ public class Name implements ValueObject<String> {
     private final String value;
     public Name(String value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()){
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
-        }
-        if (this.value.length() <= 2){
-            throw new IllegalArgumentException("El nombre debe tener más de dos caracteres");
-        }
     }
 
     @Override

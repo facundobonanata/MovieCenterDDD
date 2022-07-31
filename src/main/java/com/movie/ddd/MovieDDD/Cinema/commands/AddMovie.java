@@ -1,7 +1,6 @@
 package com.movie.ddd.MovieDDD.Cinema.commands;
 
 import co.com.sofka.domain.generic.Command;
-import com.movie.ddd.MovieDDD.Cinema.Cinema;
 import com.movie.ddd.MovieDDD.Cinema.values.*;
 
 public class AddMovie extends Command {

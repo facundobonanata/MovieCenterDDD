@@ -9,11 +9,7 @@ public class Email implements ValueObject<String> {
     private final String value;
 
     public Email(String value){
-        Objects.requireNonNull(value,  "La cedula es obligatoria");
-        if(value.isBlank()){
-            throw new IllegalReceiveException("el campo de la cedula no puede estar vacio");
-        }
-        this.value=value;
+        this.value=Objects.requireNonNull(value);
 }
     public String value() {
         return value;

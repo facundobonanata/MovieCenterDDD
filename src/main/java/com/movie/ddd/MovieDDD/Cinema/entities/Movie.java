@@ -21,13 +21,6 @@ public class Movie extends Entity<MovieId> {
         this.movieName = Objects.requireNonNull(movieName);
     }
 
-    public void updateLanguage(Language language){
-        this.language = Objects.requireNonNull(language);
-    }
-
-    public void updateGender(Gender gender){
-        this.gender=Objects.requireNonNull(gender);
-    }
 
     public Gender getGender() {
         return gender;

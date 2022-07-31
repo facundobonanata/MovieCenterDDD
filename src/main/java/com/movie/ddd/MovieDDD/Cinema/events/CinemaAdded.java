@@ -2,23 +2,23 @@ package com.movie.ddd.MovieDDD.Cinema.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import com.movie.ddd.MovieDDD.Cinema.entities.Seat;
-import com.movie.ddd.MovieDDD.Cinema.values.Capacidad;
+import com.movie.ddd.MovieDDD.Cinema.values.Capacity;
 
 import java.util.Set;
 
 
 public class CinemaAdded extends DomainEvent {
-    private final Capacidad capacidad;
+    private final Capacity capacity;
     private final Set<Seat> seats;
 
-    public CinemaAdded(Capacidad capacidad, Set<Seat> seats) {
+    public CinemaAdded(Capacity capacity, Set<Seat> seats) {
         super("com.movie.ddd.MovieDDD.cinema.cinemaadded");
-        this.capacidad = capacidad;
+        this.capacity = capacity;
         this.seats = seats;
     }
 
-    public Capacidad getCapacidad() {
-        return capacidad;
+    public Capacity getCapacity() {
+        return capacity;
     }
 
     public Set<Seat> getSeats() {

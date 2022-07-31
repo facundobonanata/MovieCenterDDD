@@ -2,7 +2,7 @@ package com.movie.ddd.MovieDDD.Cinema.commands;
 
 import co.com.sofka.domain.generic.Command;
 import com.movie.ddd.MovieDDD.Cinema.entities.Seat;
-import com.movie.ddd.MovieDDD.Cinema.values.Capacidad;
+import com.movie.ddd.MovieDDD.Cinema.values.Capacity;
 import com.movie.ddd.MovieDDD.Cinema.values.CinemaId;
 
 import java.util.Set;
@@ -10,20 +10,20 @@ import java.util.Set;
 public class AddCinema extends Command {
 
 
-    private final Capacidad capacidad;
+    private final Capacity capacity;
     private final Set<Seat> seats;
     private final CinemaId cinemaId;
 
 
-    public AddCinema(CinemaId cinemaId, Capacidad capacidad, Set<Seat> seats) {
+    public AddCinema(CinemaId cinemaId, Capacity capacity, Set<Seat> seats) {
         this.seats =seats;
-        this.capacidad = capacidad;
+        this.capacity = capacity;
         this.cinemaId = cinemaId;
     }
 
 
-    public Capacidad getCapacidad() {
-        return capacidad;
+    public Capacity getCapacity() {
+        return capacity;
     }
 
     public Set<Seat> getSeats() {
