@@ -48,6 +48,10 @@ public void AddManager(ManagerId entityId, NameManager nameManager, Email email)
     appendChange(new ManagerAdded(entityId, nameManager, email)).apply();
 }
 
+public void UpdateEmailManager(ManagerId managerId, Email email, CinemaId cinemaId){
+        appendChange(new UpdatedEmailManager(managerId, email, cinemaId));
+}
+
     public void AddMovie(MovieId movieId, MovieName movieName, Gender gender, Language language){
     Objects.requireNonNull(gender);
     Objects.requireNonNull(language);
