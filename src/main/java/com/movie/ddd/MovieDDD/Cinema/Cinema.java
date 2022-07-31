@@ -65,7 +65,7 @@ public void UpdateLanguageMovie(MovieId movieId, Language language){
     public void UpdateGenderMovie(MovieId movieId, Gender gender){
         appendChange(new UpdatedGenderMovie(movieId, gender)).apply();
     }
-    public Movie movie(){
+    public Movie movieId(){
     return movie;
     }
     public Manager manager(){

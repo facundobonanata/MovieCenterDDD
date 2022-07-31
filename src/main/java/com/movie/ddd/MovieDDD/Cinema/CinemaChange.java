@@ -32,9 +32,6 @@ public class CinemaChange extends EventChange {
             cinema.UpdateLanguageMovie(event.getMovieId(),event.getLanguage());
         });
         apply((MovieAdded event)->{
-            if(cinema.movie != null){
-                throw new IllegalArgumentException("Asigne una pelicula");
-            }
             cinema.movie = new Movie(
                     event.getMovieId(),
                     event.getGender(),

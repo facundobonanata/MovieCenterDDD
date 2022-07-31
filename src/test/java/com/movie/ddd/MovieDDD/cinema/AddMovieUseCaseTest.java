@@ -4,13 +4,11 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.movie.ddd.MovieDDD.Cinema.commands.UpdateManagerEmail;
+import com.movie.ddd.MovieDDD.Cinema.commands.AddMovie;
 import com.movie.ddd.MovieDDD.Cinema.entities.Seat;
 import com.movie.ddd.MovieDDD.Cinema.events.CinemaAdded;
-import com.movie.ddd.MovieDDD.Cinema.events.ManagerAdded;
-import com.movie.ddd.MovieDDD.Cinema.events.UpdatedEmailManager;
-import com.movie.ddd.MovieDDD.Cinema.events.UpdatedNameManager;
-import com.movie.ddd.MovieDDD.Cinema.usecases.UpdateEmailManagerUseCase;
+import com.movie.ddd.MovieDDD.Cinema.events.MovieAdded;
+import com.movie.ddd.MovieDDD.Cinema.usecases.AddMovieUseCase;
 import com.movie.ddd.MovieDDD.Cinema.values.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,39 +24,45 @@ import java.util.Set;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class UpdateEmailManagerUseCaseTest {
+public class AddMovieUseCaseTest {
 
     @Mock
     DomainEventRepository repository;
 
     @InjectMocks
-    UpdateEmailManagerUseCase useCase;
+    AddMovieUseCase useCase;
 
+    //arrange
     @Test
-    void updateEmail(){
-        var cinemaId = CinemaId.of("Movie1");
-        var command = new UpdateManagerEmail(new Email("Alonsito21@Viera.com"), new ManagerId(), cinemaId);
+    void AddMovieC(){
+
+        //arrange
+        var cinemaId = new CinemaId();
+        var command = new AddMovie(new MovieId(), new MovieName("Avengers"), cinemaId, new Gender("Accion"), new Language("Español España"));
         when(repository.getEventsBy(cinemaId.value())).thenReturn(history());
         useCase.addRepository(repository);
 
+        //act
         var events = UseCaseHandler.getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
 
-        var event = (UpdatedEmailManager)events.get(0);
-        Assertions.assertEquals("Alonsito21@Viera.com", event.getEmail().value());
-
+        //assert
+        var event = (MovieAdded)events.get(0);
+        Assertions.assertEquals("Avengers", event.getMovieName().value());
+        Assertions.assertEquals("Español España", event.getLanguage().value());
+        Assertions.assertEquals("Accion", event.getGender().value());
     }
+
     private List<DomainEvent> history() {
         var capacidad = new Capacidad(72);
         Set<Seat> seats = new HashSet<>();
-        var managerId = ManagerId.of("Movie1");
-        var name = new NameManager("Argelio Rodolfino");
-        var email = new Email("Areglito@gmail.com");
         return List.of(
-                new CinemaAdded(capacidad, seats),
-                new ManagerAdded(managerId, name, email));
-
+                new CinemaAdded(capacidad, seats)
+        );
     }
+
 }
+
+

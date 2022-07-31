@@ -11,9 +11,6 @@ public class Movie extends Entity<MovieId> {
     protected MovieName movieName;
 
 
-    public Movie(MovieId entityId){
-        super(entityId);
-    }
     public Movie(MovieId entityId, Gender gender, Language language, MovieName movieName) {
         super(entityId);
         this.gender = gender;
